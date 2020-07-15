@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style type=""></style>
+</head>
+<body>
+    <h1 id="demo" style="font-size: 100px;">asdfasdfa</h1>
+
+    <a href="http://google.com">
+        <div style="width: 100px; height: 100px; background-color: black;">
+            Soy una caja
+        </div>
+    </a>
+
+    <button onclick="myFunction()">Try it</button>
+
+
+    <div id="app">
+        <h1 style="font-size: 30px;">{{ alumnos.length }}</h1>
+        <ul style="font-size: 40px;">
+            <li v-for="item in alumnos">{{ item }}</li>
+        </ul>
+        <input type="text" v-model="alumno">
+        <button @click="agregarAlumno()">Agregar Alumno</button>
+    </div>
+
+
+    <script>
+        // import axios from 'axios'
+        var app = new Vue({
+            el: '#app',
+            data: {
+                alumno: "",
+                alumnos: ["Tao", "Suri", "Carlo", "Juli"]
+            },
+            methods: {
+                agregarAlumno(){
+                    // alert("SOY UNA ALERTA")
+                    console.log("Agregar Alumno")
+                    this.alumnos.push(this.alumno)
+
+
+                axios
+                    .get('localhost:3000')
+                    .then(response => (
+                        // this.info = response
+                        console.log(response)
+                        ))
+                }
+            },
+            // mounted () {
+            //     axios
+            //     .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+            //     .then(response => (this.info = response))
+            // }
+        })
+    </script>
+
+
+
+
+
+    <script>
+        console.log("hola soy javascript")
+
+        function myFunction() {
+            document.getElementById("demo").innerHTML = "Hello World";
+            alert("esto es una alerta")
+        }
+
+        
+    </script>
+
+</body>
+</html>
